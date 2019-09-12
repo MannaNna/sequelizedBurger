@@ -1,0 +1,43 @@
+<div class="container">
+    <section id="page-name">
+            <iframe id="main-image" src="https://media.giphy.com/media/UuZGbaZPOnrTeevIkq/giphy.gif" width="480" height="326" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+            <h1>Eat-Da-Buger</h1>
+    </section>
+
+    <section class="row">
+        <div class="col-md-7 col-left">
+            <table>
+                {{#each burgers}}
+                    {{#unless devoured}}
+                        {{> burgers/burger-block}}
+                    {{/unless}}
+                {{/each}}
+            </table>
+        </div>
+        <div class="col-md-5 col-right">
+            {{#each burgers}}
+                {{#if devoured}}
+                    <div>{{id}}. {{burger_name}}</div>
+                {{/if}}
+            {{/each}}        
+        </div>          
+    </section>
+
+    <form class="create-form">
+        <div class="form-group">
+            <label for="name"></label>
+            <textarea id="name" name="burger-name" rows="2" cols="40" placeholder="What do you want to eat?"></textarea>
+        </div>
+        <button type="submit">Add Burger</button>
+    </form>     
+</div>
+
+<h2>Add A Burger Option</h2>
+<div class="row">
+    <div class="col s12">
+        <form action="/burgers" method="POST">
+        <input type="text" id="name" name="burger_name" placeholder="Enter a burger you want to eat.">
+        <button type="submit" class="addBurgerButton">Submit</button>
+        </form>
+    </div>
+</div>
